@@ -42,8 +42,4 @@ libraries/TinyGPSPlus-master/src \
 libraries/Wire/src \
 libraries/Wire/src/utility \
 . \
-libraries/NeoGPS-master/src \
-libraries/NeoGPS-master/src/Garmin \
-libraries/NeoGPS-master/src/ublox \
-libraries/TinyGPS-13 \
 

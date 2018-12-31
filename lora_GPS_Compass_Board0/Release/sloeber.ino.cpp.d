@@ -21,7 +21,7 @@ sloeber.ino.cpp.o: ../sloeber.ino.cpp \
  /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RadioHead.h \
  /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHHardwareSPI.h \
  /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHGenericSPI.h \
- ../lora_GPS_Compass_Board0.ino
+ ../config.h ../lora_GPS_Compass_Board0.ino
 
 /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Arduino.h:
 
@@ -66,5 +66,7 @@ sloeber.ino.cpp.o: ../sloeber.ino.cpp \
 /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHHardwareSPI.h:
 
 /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHGenericSPI.h:
+
+../config.h:
 
 ../lora_GPS_Compass_Board0.ino:
