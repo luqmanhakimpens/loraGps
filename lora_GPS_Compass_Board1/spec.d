@@ -1,2 +1,2 @@
 spec.o: \
- /home/honeybrew/dev-envi/sloeber/workspace-sloeber/.metadata/.plugins/org.eclipse.cdt.managedbuilder.core/spec.C
+ D:/SLOEBER/WORKSPACE_SLOEBER/.metadata/.plugins/org.eclipse.cdt.managedbuilder.core/spec.c

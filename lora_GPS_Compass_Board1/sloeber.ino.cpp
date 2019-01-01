@@ -2,7 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2018-12-31 23:20:34
+//This file has been generated on 2019-01-01 18:35:41
 
 #include "Arduino.h"
 #include <SPI.h>
@@ -14,6 +14,7 @@
 
 static void parseGps(unsigned long ms) ;
 String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms) ;
+void rec_gpsNhead(double *lat, double *lon, float *heading) ;
 void ledInit() ;
 void ledOut(uint8_t segment, uint8_t led, uint8_t state) ;
 void headingDistanceToLed(float distance, float heading) ;

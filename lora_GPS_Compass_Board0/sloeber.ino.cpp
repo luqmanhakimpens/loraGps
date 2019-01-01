@@ -2,7 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2018-12-31 23:05:25
+//This file has been generated on 2019-01-01 18:48:23
 
 #include "Arduino.h"
 #include "Arduino.h"
@@ -15,6 +15,7 @@
 #include <RH_RF95.h>
 #include "config.h"
 
+void rec_gpsNhead(double *lat, double *lon, float *heading) ;
 static void parseGps(unsigned long ms) ;
 String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms) ;
 void ledInit() ;

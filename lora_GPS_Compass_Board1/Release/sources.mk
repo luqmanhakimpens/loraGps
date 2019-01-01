@@ -34,13 +34,12 @@ CPP_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-core/core \
-libraries/HMC5883L_Simple \
-libraries/Mecha_QMC5883L-master \
-libraries/RadioHead \
-libraries/SPI/src \
-libraries/TinyGPSPlus-master/src \
-libraries/Wire/src \
-libraries/Wire/src/utility \
+core\core \
+libraries\Mecha_QMC5883L-master \
+libraries\RadioHead \
+libraries\SPI\src \
+libraries\TinyGPSPlus-master\src \
+libraries\Wire\src \
+libraries\Wire\src\utility \
 . \
 

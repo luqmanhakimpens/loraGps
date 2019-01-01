@@ -1,38 +1,38 @@
-core/core/HardwareSerial0.cpp.o: \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/HardwareSerial0.cpp \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Arduino.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/binary.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WCharacter.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WString.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/HardwareSerial.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Stream.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Print.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Printable.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/USBAPI.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/variants/mega/pins_arduino.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/HardwareSerial_private.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/wiring_private.h
+core\core\HardwareSerial0.cpp.o: \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\HardwareSerial0.cpp \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\Arduino.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\binary.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\WCharacter.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\WString.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\HardwareSerial.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\Stream.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\Print.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\Printable.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\USBAPI.h \
+ D:\ARDUINO\hardware\arduino\avr\variants\mega/pins_arduino.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\HardwareSerial_private.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino\wiring_private.h
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Arduino.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\Arduino.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/binary.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\binary.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WCharacter.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\WCharacter.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WString.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\WString.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/HardwareSerial.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\HardwareSerial.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Stream.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\Stream.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Print.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\Print.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Printable.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\Printable.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/USBAPI.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\USBAPI.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/variants/mega/pins_arduino.h:
+D:\ARDUINO\hardware\arduino\avr\variants\mega/pins_arduino.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/HardwareSerial_private.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\HardwareSerial_private.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/wiring_private.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino\wiring_private.h:

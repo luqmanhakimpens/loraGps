@@ -1,72 +1,72 @@
-sloeber.ino.cpp.o: ../sloeber.ino.cpp \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Arduino.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/binary.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WCharacter.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WString.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/HardwareSerial.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Stream.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Print.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Printable.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/USBAPI.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Arduino.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/variants/mega/pins_arduino.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/libraries/SPI/src/SPI.h \
- /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RH_RF95.h \
- /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHSPIDriver.h \
- /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHGenericDriver.h \
- /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RadioHead.h \
- /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHHardwareSPI.h \
- /home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHGenericSPI.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src/Wire.h \
- /home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Stream.h \
- /home/honeybrew/dev-envi/Arduino/libraries/Mecha_QMC5883L-master/MechaQMC5883.h \
- /home/honeybrew/dev-envi/Arduino/libraries/TinyGPSPlus-master/src/TinyGPS++.h \
- ../config.h ../lora_GPS_Compass_Board1.ino
+sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/Arduino.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/binary.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/WCharacter.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/WString.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/Stream.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/Print.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/Printable.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/USBAPI.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/Arduino.h \
+ D:\ARDUINO\hardware\arduino\avr\variants\mega/pins_arduino.h \
+ D:\ARDUINO\hardware\arduino\avr\libraries\SPI\src/SPI.h \
+ D:\ARDUINO\Arduino\libraries\RadioHead/RH_RF95.h \
+ D:\ARDUINO\Arduino\libraries\RadioHead/RHSPIDriver.h \
+ D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericDriver.h \
+ D:\ARDUINO\Arduino\libraries\RadioHead/RadioHead.h \
+ D:\ARDUINO\Arduino\libraries\RadioHead/RHHardwareSPI.h \
+ D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericSPI.h \
+ D:\ARDUINO\hardware\arduino\avr\libraries\Wire\src/Wire.h \
+ D:\ARDUINO\hardware\arduino\avr\cores\arduino/Stream.h \
+ D:\ARDUINO\Arduino\libraries\Mecha_QMC5883L-master/MechaQMC5883.h \
+ D:\ARDUINO\Arduino\libraries\TinyGPSPlus-master\src/TinyGPS++.h \
+ ..\config.h ..\lora_GPS_Compass_Board1.ino
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Arduino.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/Arduino.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/binary.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/binary.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WCharacter.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/WCharacter.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/WString.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/WString.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/HardwareSerial.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/HardwareSerial.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Stream.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/Stream.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Print.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/Print.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Printable.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/Printable.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/USBAPI.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/USBAPI.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Arduino.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/Arduino.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/variants/mega/pins_arduino.h:
+D:\ARDUINO\hardware\arduino\avr\variants\mega/pins_arduino.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/libraries/SPI/src/SPI.h:
+D:\ARDUINO\hardware\arduino\avr\libraries\SPI\src/SPI.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RH_RF95.h:
+D:\ARDUINO\Arduino\libraries\RadioHead/RH_RF95.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHSPIDriver.h:
+D:\ARDUINO\Arduino\libraries\RadioHead/RHSPIDriver.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHGenericDriver.h:
+D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericDriver.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RadioHead.h:
+D:\ARDUINO\Arduino\libraries\RadioHead/RadioHead.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHHardwareSPI.h:
+D:\ARDUINO\Arduino\libraries\RadioHead/RHHardwareSPI.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/RadioHead/RHGenericSPI.h:
+D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericSPI.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src/Wire.h:
+D:\ARDUINO\hardware\arduino\avr\libraries\Wire\src/Wire.h:
 
-/home/honeybrew/dev-envi/sloeber/arduinoPlugin/packages/arduino/hardware/avr/1.6.23/cores/arduino/Stream.h:
+D:\ARDUINO\hardware\arduino\avr\cores\arduino/Stream.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/Mecha_QMC5883L-master/MechaQMC5883.h:
+D:\ARDUINO\Arduino\libraries\Mecha_QMC5883L-master/MechaQMC5883.h:
 
-/home/honeybrew/dev-envi/Arduino/libraries/TinyGPSPlus-master/src/TinyGPS++.h:
+D:\ARDUINO\Arduino\libraries\TinyGPSPlus-master\src/TinyGPS++.h:
 
-../config.h:
+..\config.h:
 
-../lora_GPS_Compass_Board1.ino:
+..\lora_GPS_Compass_Board1.ino:

@@ -2,20 +2,20 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
--include ../makefile.init
+-include ..\makefile.init
 
-RM := rm
+RM := del 
 
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
--include libraries/Wire/src/utility/subdir.mk
--include libraries/Wire/src/subdir.mk
--include libraries/TinyGPSPlus-master/src/subdir.mk
--include libraries/SPI/src/subdir.mk
--include libraries/RadioHead/subdir.mk
--include libraries/HMC5883L_Simple/subdir.mk
--include core/core/subdir.mk
+-include libraries\Wire\src\utility\subdir.mk
+-include libraries\Wire\src\subdir.mk
+-include libraries\TinyGPSPlus-master\src\subdir.mk
+-include libraries\SPI\src\subdir.mk
+-include libraries\RadioHead\subdir.mk
+-include libraries\HMC5883L_Simple\subdir.mk
+-include core\core\subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -51,11 +51,11 @@ ifneq ($(strip $(C_DEPS)),)
 endif
 endif
 
--include ../makefile.defs
+-include ..\makefile.defs
 
 # Add inputs and outputs from these tool invocations to the build variables 
 AR += \
-/home/honeybrew/dev-envi/sloeber/workspace-sloeber/lora_GPS_Compass_Board0/Release/arduino.ar \
+D:\SLOEBER\WORKSPACE_SLOEBER\loraGps\lora_GPS_Compass_Board0\Release\arduino.ar \
 
 ELF += \
 lora_GPS_Compass_Board0.elf \
@@ -71,19 +71,19 @@ all: lora_GPS_Compass_Board0
 lora_GPS_Compass_Board0: $(HEX)
 	@echo 'Building target: $@'
 	@echo 'Printing size:'
-	"/home/honeybrew/dev-envi/sloeber//arduinoPlugin/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/bin/avr-size" -A "/home/honeybrew/dev-envi/sloeber/workspace-sloeber/lora_GPS_Compass_Board0/Release/lora_GPS_Compass_Board0.elf"
+	"D:\SLOEBER\arduinoPlugin\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.4-arduino2/bin/avr-size" -A "D:/SLOEBER/WORKSPACE_SLOEBER/loraGps/lora_GPS_Compass_Board0/Release/lora_GPS_Compass_Board0.elf"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-/home/honeybrew/dev-envi/sloeber/workspace-sloeber/lora_GPS_Compass_Board0/Release/arduino.ar: $(AR_OBJ)
+D:\SLOEBER\WORKSPACE_SLOEBER\loraGps\lora_GPS_Compass_Board0\Release\arduino.ar: $(AR_OBJ)
 	@echo 'Starting archiver'
-	"/home/honeybrew/dev-envi/sloeber//arduinoPlugin/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/bin/avr-gcc-ar" rcs     /home/honeybrew/dev-envi/sloeber/workspace-sloeber/lora_GPS_Compass_Board0/Release/arduino.ar $(AR_OBJ)
+	"D:\SLOEBER\arduinoPlugin\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.4-arduino2/bin/avr-gcc-ar" rcs     D:/SLOEBER/WORKSPACE_SLOEBER/loraGps/lora_GPS_Compass_Board0/Release/arduino.ar $(AR_OBJ)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 lora_GPS_Compass_Board0.elf: $(LINK_OBJ) $(AR)
 	@echo 'Starting combiner'
-	"/home/honeybrew/dev-envi/sloeber//arduinoPlugin/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/bin/avr-gcc" -Wall -Wextra -Os -Wl,--gc-sections,--relax -mmcu=atmega2560  -o "/home/honeybrew/dev-envi/sloeber/workspace-sloeber/lora_GPS_Compass_Board0/Release/lora_GPS_Compass_Board0.elf"   $(LINK_OBJ)   /home/honeybrew/dev-envi/sloeber/workspace-sloeber/lora_GPS_Compass_Board0/Release/arduino.ar  "-L/home/honeybrew/dev-envi/sloeber/workspace-sloeber/lora_GPS_Compass_Board0/Release" -lm
+	"D:\SLOEBER\arduinoPlugin\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.4-arduino2/bin/avr-gcc" -Wall -Wextra -Os -Wl,--gc-sections,--relax -mmcu=atmega2560  -o "D:/SLOEBER/WORKSPACE_SLOEBER/loraGps/lora_GPS_Compass_Board0/Release/lora_GPS_Compass_Board0.elf"   $(LINK_OBJ)   D:/SLOEBER/WORKSPACE_SLOEBER/loraGps/lora_GPS_Compass_Board0/Release/arduino.ar  "-LD:/SLOEBER/WORKSPACE_SLOEBER/loraGps/lora_GPS_Compass_Board0/Release" -lm
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -101,4 +101,4 @@ clean:
 
 .PHONY: all clean dependents
 
--include ../makefile.targets
+-include ..\makefile.targets

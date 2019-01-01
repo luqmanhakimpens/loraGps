@@ -29,8 +29,8 @@ RH_RF95 rf95;
 int led = 13;
 double lat, lon;
 float heading;
-double rec_lat,rec_lon,rec_hd;
-
+double rec_lat,rec_lon;
+float rec_hd;
 static const uint32_t GPSBaud = 9600;
 
 static void parseGps(unsigned long ms)
@@ -45,7 +45,6 @@ static void parseGps(unsigned long ms)
 }
 String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms)
 {
-
 /*	printInt(gps.satellites.value(), gps.satellites.isValid(), 5);
 	printFloat(gps.hdop.hdop(), gps.hdop.isValid(), 6, 1);
 	printFloat(gps.location.lat(), gps.location.isValid(), 11, 6);
@@ -60,24 +59,86 @@ String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms)
 /*	Serial.print(gps.location.lat());
 	Serial.print(gps.location.lng());*/
 
+	char str_buff[200];
+	String retVal="";
+
 	parseGps(ms);
 
 	double lat_t=gps.location.lat();
 	double lon_t=gps.location.lng();
 	//double head_t=Compass.GetHeadingDegrees();
 
+	uint16_t x, y, z;
+	float head_t;
+	qmc.read(&x, &y, &z,&head_t);
+	reCal_heading(declinationDegree, declinationMinute, 'E', &head_t);
+
 	*lat=lat_t;
 	*lon=lon_t;
+	*heading=head_t;
 
-	uint16_t x, y, z;
-	float head;
-	qmc.read(&x, &y, &z,&head);
-	reCal_heading(declinationDegree, declinationMinute, 'E', &head);
+	uint32_t decPlace_lat= (lat_t - int(lat_t))*1000000;
+	uint32_t decPlace_lon= (lon_t - int(lon_t))*1000000;
+	uint32_t decPlace_hd=  (head_t - int(head_t))*1000;
 
-	*heading=head;
+	sprintf(str_buff,"%04d.%06lu,%04d.%06lu #%03d.%03lu",
+			(int)lat_t,decPlace_lat, (int)lon_t,decPlace_lon, (int)head_t,decPlace_hd);
+
+	retVal=str_buff;
+
+	//return retVal;
+	return   String(lat_t,6) + "," +  String(lon_t,6) + " #" + String(head_t,2);
+	//return  "(" + String(lat_t,6) + "," +  String(lon_t,6) +") #" + String(head,2);
+}
+
+void rec_gpsNhead(double *lat, double *lon, float *heading)
+{
+	if (rf95.available())
+	{
+		Serial.print("receive  ");
+		// Should be a message for us now
+		uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
+		uint8_t len = sizeof(buf);
+
+		if (rf95.recv(buf, &len))
+		{
+			digitalWrite(led, HIGH);
+
+			String rec=(char*)buf;
+
+			*lat = ::atof(rec.substring(0,rec.indexOf(',')).c_str());
+			*lon = ::atof(rec.substring(rec.indexOf(',')+1,rec.indexOf('#')).c_str());
+			*heading  = ::atof(rec.substring(rec.indexOf('#')+1).c_str());
+
+			//Serial.print((char*)buf);
+			//Serial.print(" RSSI: ");
+			//Serial.println(rf95.lastRssi(), DEC);
+
+/*			Serial.print("rec_lat: ");
+			Serial.print(rec_lat,5);
+			Serial.print("  rec_lon: ");
+			Serial.print(rec_lon,5);
+			Serial.print("  rec_hd: ");
+			Serial.println(rec_hd,3);*/
+
+			//      RH_RF95::printBuffer("request: ", buf, len);
+			//Serial.print("got data: ");
 
 
-	return  "(" + String(lat_t,6) + "," +  String(lon_t,6) +") #" + String(head,2);
+			///Serial.println(rec.substring(0, rec.indexOf('.')));
+
+	// Send a reply
+	//      uint8_t data[] = "And hello back to you";
+	//      rf95.send(data, sizeof(data));
+	//      rf95.waitPacketSent();
+	//      Serial.println("Sent a reply");
+			digitalWrite(led, LOW);
+		}
+		else
+		{
+			Serial.println("recv failed");
+		}
+	}
 }
 
 void ledInit()
@@ -204,7 +265,7 @@ void setup()
   while (!Serial) ; // Wait for serial port to be available
   if (!rf95.init())
     Serial.println("init failed");
-  else Serial.print("init complete");
+  else Serial.println("init complete(board1)");
 
   Wire.begin();
   qmc.init();
@@ -223,53 +284,25 @@ void setup()
 }
 void loop()
 {
-	///Serial.print("_my data: ");
-	//Serial.println(get_gpsNhead(&lat,&lon,&heading,100));
-	delay(500);
+	//delay(100);
+	//Serial.println(get_gpsNhead(&lat,&lon,&heading,10));
 
-	if (rf95.available())
-	{
-		// Should be a message for us now
-		uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
-		uint8_t len = sizeof(buf);
-		if (rf95.recv(buf, &len))
-		{
-			String rec=(char*)buf;
+	char data[50];
 
-			rec_lat = ::atof(rec.substring(0,rec.indexOf(',')).c_str());
-			rec_lon = ::atof(rec.substring(rec.indexOf(',')+1,rec.indexOf('#')).c_str());
-			rec_hd  = ::atof(rec.substring(rec.indexOf('#')+1).c_str());
-
-			Serial.print((char*)buf);
-			Serial.print(" RSSI: ");
-			Serial.println(rf95.lastRssi(), DEC);
-
-			Serial.print("rec_lat: ");
-			Serial.print(rec_lat,5);
-			Serial.print("  rec_lon: ");
-			Serial.print(rec_lon,5);
-			Serial.print("  rec_hd: ");
-			Serial.println(rec_hd,3);
-
-			digitalWrite(led, HIGH);
-			//      RH_RF95::printBuffer("request: ", buf, len);
-			//Serial.print("got data: ");
-
-
-			///Serial.println(rec.substring(0, rec.indexOf('.')));
-
-	// Send a reply
-	//      uint8_t data[] = "And hello back to you";
-	//      rf95.send(data, sizeof(data));
-	//      rf95.waitPacketSent();
-	//      Serial.println("Sent a reply");
-			digitalWrite(led, LOW);
-		}
-		else
-		{
-			Serial.println("recv failed");
-		}
-	}
-
+	get_gpsNhead(&lat,&lon,&heading,10).toCharArray(data, 50);
+	rec_gpsNhead(&rec_lat, &rec_lon, &rec_hd);
 	headingDistanceToLed(120, rec_hd);
+
+	rf95.send((uint8_t*)data, sizeof(data));
+	rf95.waitPacketSent(2000);
+	rf95.setModeRx();
+
+
+	//rf95.
+
+	String str = String(lat,6) + "," + String(lon,6) + " #" + String(heading,2) + " to " +
+				 String(rec_lat,6) + "," + String(rec_lon,6) + " #" + String(rec_hd,2);
+
+	Serial.println(str);
+	delay(100);
 }
