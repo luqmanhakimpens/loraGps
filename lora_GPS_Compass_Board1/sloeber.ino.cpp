@@ -2,7 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2019-01-01 18:35:41
+//This file has been generated on 2019-01-07 00:30:02
 
 #include "Arduino.h"
 #include <SPI.h>
@@ -11,13 +11,11 @@
 #include <MechaQMC5883.h>
 #include <TinyGPS++.h>
 #include "config.h"
+#include "peripheral.h"
 
 static void parseGps(unsigned long ms) ;
 String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms) ;
-void rec_gpsNhead(double *lat, double *lon, float *heading) ;
-void ledInit() ;
-void ledOut(uint8_t segment, uint8_t led, uint8_t state) ;
-void headingDistanceToLed(float distance, float heading) ;
+uint8_t rec_gpsNhead(double *lat, double *lon, float *heading) ;
 void reCal_heading(int declDeg, int declMin, char declDir, float *heading) ;
 void setup() ;
 void loop() ;

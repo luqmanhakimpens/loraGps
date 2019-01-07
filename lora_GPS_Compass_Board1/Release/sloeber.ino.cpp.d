@@ -21,7 +21,9 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  D:\ARDUINO\hardware\arduino\avr\cores\arduino/Stream.h \
  D:\ARDUINO\Arduino\libraries\Mecha_QMC5883L-master/MechaQMC5883.h \
  D:\ARDUINO\Arduino\libraries\TinyGPSPlus-master\src/TinyGPS++.h \
- ..\config.h ..\lora_GPS_Compass_Board1.ino
+ D:\SLOEBER\extLib\loraGpsPeriph/config.h \
+ D:\SLOEBER\extLib\loraGpsPeriph/peripheral.h \
+ ..\lora_GPS_Compass_Board1.ino
 
 D:\ARDUINO\hardware\arduino\avr\cores\arduino/Arduino.h:
 
@@ -67,6 +69,8 @@ D:\ARDUINO\Arduino\libraries\Mecha_QMC5883L-master/MechaQMC5883.h:
 
 D:\ARDUINO\Arduino\libraries\TinyGPSPlus-master\src/TinyGPS++.h:
 
-..\config.h:
+D:\SLOEBER\extLib\loraGpsPeriph/config.h:
+
+D:\SLOEBER\extLib\loraGpsPeriph/peripheral.h:
 
 ..\lora_GPS_Compass_Board1.ino:

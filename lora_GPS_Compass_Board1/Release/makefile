@@ -9,12 +9,14 @@ RM := del
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include libraries\loraGpsPeriph\subdir.mk
 -include libraries\Wire\src\utility\subdir.mk
 -include libraries\Wire\src\subdir.mk
 -include libraries\TinyGPSPlus-master\src\subdir.mk
 -include libraries\SPI\src\subdir.mk
 -include libraries\RadioHead\subdir.mk
 -include libraries\Mecha_QMC5883L-master\subdir.mk
+-include libraries\HMC5883L_Simple\subdir.mk
 -include core\core\subdir.mk
 -include objects.mk
 

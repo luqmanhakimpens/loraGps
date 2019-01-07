@@ -20,7 +20,10 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericDriver.h \
  D:\ARDUINO\Arduino\libraries\RadioHead/RadioHead.h \
  D:\ARDUINO\Arduino\libraries\RadioHead/RHHardwareSPI.h \
- D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericSPI.h ..\config.h \
+ D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericSPI.h \
+ D:\SLOEBER\extLib\loraGpsPeriph/peripheral.h \
+ D:\SLOEBER\extLib\loraGpsPeriph/config.h \
+ D:\ARDUINO\Arduino\libraries\DFRobotDFPlayerMini-1.0.3/DFRobotDFPlayerMini.h \
  ..\lora_GPS_Compass_Board0.ino
 
 D:\ARDUINO\hardware\arduino\avr\cores\arduino/Arduino.h:
@@ -67,6 +70,10 @@ D:\ARDUINO\Arduino\libraries\RadioHead/RHHardwareSPI.h:
 
 D:\ARDUINO\Arduino\libraries\RadioHead/RHGenericSPI.h:
 
-..\config.h:
+D:\SLOEBER\extLib\loraGpsPeriph/peripheral.h:
+
+D:\SLOEBER\extLib\loraGpsPeriph/config.h:
+
+D:\ARDUINO\Arduino\libraries\DFRobotDFPlayerMini-1.0.3/DFRobotDFPlayerMini.h:
 
 ..\lora_GPS_Compass_Board0.ino:

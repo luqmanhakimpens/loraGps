@@ -6,12 +6,19 @@
 #include <TinyGPS++.h>
 #include <SPI.h>
 #include <RH_RF95.h>
+#include "peripheral.h"
 #include "config.h"
+#include "DFRobotDFPlayerMini.h"
+
+#define disconnect 	0
+#define connect 	1
+
 static const uint32_t GPSBaud = 9600;
 
 TinyGPSPlus gps;
 HMC5883L_Simple Compass;
 RH_RF95 rf95;
+DFRobotDFPlayerMini myDFPlayer;
 
 bool newData = false;
 unsigned long age, date, time, chars = 0;
@@ -19,13 +26,17 @@ int year;
 byte month, day, hour, minute, second, hundredths;
 float flat=-7.305873,  flon=112.797678;
 char buff[100];
-double lat, lon;
-double rec_lat, rec_lon;
-float rec_hd;
-float heading;
 
-void rec_gpsNhead(double *lat, double *lon, float *heading)
+double lat=0, lon=0;
+double rec_lat=0, rec_lon=0;
+float rec_hd=0;
+float heading=0;
+
+uint8_t recCount,conStatus;
+
+uint8_t rec_gpsNhead(double *lat, double *lon, float *heading)
 {
+	uint8_t retVal=0;
 	if (rf95.available())
 	{
 		// Should be a message for us now
@@ -65,12 +76,16 @@ void rec_gpsNhead(double *lat, double *lon, float *heading)
 	//      rf95.waitPacketSent();
 	//      Serial.println("Sent a reply");
 			digitalWrite(led_board, LOW);
+			retVal=1;
 		}
 		else
 		{
 			Serial.println("recv failed");
+			retVal=0;
 		}
 	}
+
+	return retVal;
 }
 
 static void parseGps(unsigned long ms)
@@ -125,85 +140,7 @@ String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms)
 	//return retVal;
 	return   String(lat_t,6) + "," +  String(lon_t,6) + " #" + String(head_t,2);
 }
-void ledInit()
-{
-	pinMode(led_board,OUTPUT);
 
-	pinMode(led_0,OUTPUT);
-	pinMode(led_1,OUTPUT);
-	pinMode(led_2,OUTPUT);
-	pinMode(led_3,OUTPUT);
-	pinMode(led_4,OUTPUT);
-	pinMode(led_5,OUTPUT);
-	pinMode(led_6,OUTPUT);
-	pinMode(led_7,OUTPUT);
-
-	pinMode(comA,OUTPUT);
-	pinMode(comB,OUTPUT);
-	pinMode(comC,OUTPUT);
-
-	pinMode(led_alarm,OUTPUT);
-	pinMode(led_run,OUTPUT);
-	pinMode(led_gps,OUTPUT);
-	pinMode(led_connect,OUTPUT);
-
-	Serial.print("led init");
-}
-void ledOut(uint8_t segment, uint8_t led, uint8_t state)
-{
-	if(segment==ledStatus)
-	{
-		digitalWrite(led,state);
-	}
-	else
-	{
-		digitalWrite(segment,state);
-		digitalWrite(led,state);
-	}
-
-}
-void headingDistanceToLed(float distance, float heading)
-{
-	uint8_t dis=distanceFar;
-
-	if (distance < 100)dis=distanceMid;
-	if (distance < 50)dis=distanceClose;
-
-	ledOut(dis, led_0, LOW);
-	ledOut(dis, led_1, LOW);
-	ledOut(dis, led_2, LOW);
-	ledOut(dis, led_3, LOW);
-	ledOut(dis, led_4, LOW);
-	ledOut(dis, led_5, LOW);
-	ledOut(dis, led_6, LOW);
-	ledOut(dis, led_7, LOW);
-
-	if(heading > 337.5 || heading < 22.5) //0
-		ledOut(dis, led_1, HIGH);
-
-	else if(heading > 22.5 && heading < 67.5) //45
-		ledOut(dis, led_2, HIGH);
-
-	else if(heading > 67.5 && heading < 112.5) //90
-		ledOut(dis, led_3, HIGH);
-
-	else if(heading > 112.5 && heading < 157.5) //135
-		ledOut(dis, led_4, HIGH);
-
-	else if(heading > 157.5 && heading < 202.5) //180
-		ledOut(dis, led_5, HIGH);
-
-	else if(heading > 202.5 && heading < 247.5) //225
-		ledOut(dis, led_6, HIGH);
-
-	else if(heading > 247.5 && heading < 292.5) //270
-		ledOut(dis, led_7, HIGH);
-
-	else if(heading > 292.5 && heading < 337.5)
-		ledOut(dis, led_0, HIGH); //315
-
-	//delay(30);
-}
 void setup()
 {
 	Serial.begin(115200);
@@ -219,28 +156,61 @@ void setup()
 	if (!rf95.init())Serial.println("init failed");
 	else Serial.println("\n\nrf95 init complete(board0)");
 
+/*	if (!myDFPlayer.begin(Serial2))
+	{  //Use softwareSerial to communicate with mp3.
+	    Serial.println(F("Unable to begin:"));
+	    Serial.println(F("1.Please recheck the connection!"));
+	    Serial.println(F("2.Please insert the SD card!"));
+	    while(true);
+	}*/
+
+	Serial.println(F("DFPlayer Mini online."));
+
+    myDFPlayer.setTimeOut(500);
+
 	ledOut(comA, led_4, HIGH);
 	ledOut(ledStatus, led_alarm, HIGH);
 	delay(2000);
 	ledOut(ledStatus, led_alarm, LOW);
+
 }
+
 void loop()
 {
 	//Serial.println(get_gpsNhead(&lat,&lon,&heading,10));
+	static unsigned long timer = millis();
+
+	if (millis() - timer > 5000)
+	{
+		timer = millis();
+		if(!recCount)conStatus=disconnect;
+		else
+		{
+			conStatus=connect;
+			recCount=0;
+		}
+	}
 
 	char data[50];
 	get_gpsNhead(&lat,&lon,&heading,10).toCharArray(data, 50);
-	rec_gpsNhead(&rec_lat, &rec_lon, &rec_hd);
-	headingDistanceToLed(120, heading);
+	if(rec_gpsNhead(&rec_lat, &rec_lon, &rec_hd))recCount++;
 
 	rf95.send((uint8_t*)data, sizeof(data));
 	rf95.waitPacketSent(2000);
 	rf95.setModeRx();
 
+	float distance = haversine_distance(lat, lon, rec_lat, rec_lon);
+	float bearing=calc_Bearing(lat, lon, rec_lat, rec_lon);
+	float pointheading = pointHeading(heading, bearing);
+
 	String str = String(lat,6) + "," + String(lon,6) + " #" + String(heading,2) + " to " +
-				 String(rec_lat,6) + "," + String(rec_lon,6) + " #" + String(rec_hd,2);
+				 String(rec_lat,6) + "," + String(rec_lon,6) + " #" + String(rec_hd,2) +
+				 " d: " + String(distance,3) + " b: " + String(bearing,2) + " p: " + String(pointheading,2);
 
 	Serial.println(str);
+
+	ledStatusHandler(lat, lon, conStatus, distance, pointheading);
 	delay(100);
+
 }
 
