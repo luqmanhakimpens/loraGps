@@ -146,7 +146,7 @@ void setup()
 	Serial.begin(115200);
 	Serial1.begin(GPSBaud);
 	Wire.begin();
-	Compass.SetDeclination(declinationDegree, declinationMinute, 'E');
+	Compass.SetDeclination(declinationDegree0, declinationMinute0, 'E');
 	Compass.SetSamplingMode(COMPASS_SINGLE);
 	Compass.SetScale(COMPASS_SCALE_130);
 	Compass.SetOrientation(COMPASS_HORIZONTAL_X_NORTH);
@@ -168,10 +168,10 @@ void setup()
 
     myDFPlayer.setTimeOut(500);
 
-	ledOut(comA, led_4, HIGH);
-	ledOut(ledStatus, led_alarm, HIGH);
-	delay(2000);
-	ledOut(ledStatus, led_alarm, LOW);
+	//ledOut(comA, led_4, HIGH);
+	//ledOut(ledStatus, led_alarm, HIGH);
+	//delay(2000);
+	//ledOut(ledStatus, led_alarm, LOW);
 
 }
 
@@ -183,7 +183,13 @@ void loop()
 	if (millis() - timer > 5000)
 	{
 		timer = millis();
-		if(!recCount)conStatus=disconnect;
+		if(!recCount)
+		{
+			conStatus=disconnect;
+			rec_lat=0;
+			rec_lon=0;
+			rec_hd=0;
+		}
 		else
 		{
 			conStatus=connect;

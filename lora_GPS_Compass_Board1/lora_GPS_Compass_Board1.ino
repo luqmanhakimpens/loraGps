@@ -215,7 +215,13 @@ void loop()
 	if (millis() - timer > 5000)
 	{
 		timer = millis();
-		if(!recCount)conStatus=disconnect;
+		if(!recCount)
+		{
+			conStatus=disconnect;
+			rec_lat=0;
+			rec_lon=0;
+			rec_hd=0;
+		}
 		else
 		{
 			conStatus=connect;
