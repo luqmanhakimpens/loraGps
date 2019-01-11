@@ -163,7 +163,7 @@ void dfPlay(uint8_t fileN, uint8_t *playerStatus)
 	{
 		if(*playerStatus==dfStop)
 		{
-			myDFPlayer.volume(10);  //Set volume value. From 0 to 30
+			//myDFPlayer.volume(10);  //Set volume value. From 0 to 30
 			myDFPlayer.play(fileN);
 			*playerStatus=dfPlaying;
 			Serial.print("play start");
@@ -319,6 +319,7 @@ void setup()
 	Serial.println(F("DFPlayer Mini online."));
 
     myDFPlayer.setTimeOut(500);
+    myDFPlayer.volume(25);
 }
 
 void loop()
@@ -345,7 +346,7 @@ void loop()
 
 	if(getBtn()==btn0)declDegree+=5;
 	if(getBtn()==btn1)declDegree-=5;
-	Compass.SetDeclination(declDegree,0, 'E');
+	Compass.SetDeclination(declDegree+declinationDegree0,0, 'E');
 
 	char data[50];
 	get_gpsNhead(&lat,&lon,&heading,10).toCharArray(data, 50);

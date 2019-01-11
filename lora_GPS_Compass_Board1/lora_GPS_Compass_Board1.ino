@@ -81,6 +81,15 @@ String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms)
 	uint16_t x, y, z;
 	float head_t;
 	qmc.read(&x, &y, &z,&head_t);
+
+
+/*	Serial.print("mag: ");
+	Serial.print((int)x);
+	Serial. print(", ");
+	Serial.print((int)y);
+	Serial.print(": ");
+	Serial.println(head_t);*/
+
 	reCal_heading(declDegree+declinationDegree, 0, 'E', &head_t);
 
 	*lat=lat_t;
@@ -202,7 +211,7 @@ void dfPlay(uint8_t fileN, uint8_t *playerStatus)
 	{
 		if(*playerStatus==dfStop)
 		{
-			myDFPlayer.volume(10);  //Set volume value. From 0 to 30
+			//myDFPlayer.volume(10);  //Set volume value. From 0 to 30
 			myDFPlayer.play(fileN);
 			*playerStatus=dfPlaying;
 			Serial.print("play start");
