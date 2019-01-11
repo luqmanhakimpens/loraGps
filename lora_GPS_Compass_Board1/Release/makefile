@@ -17,6 +17,7 @@ RM := del
 -include libraries\RadioHead\subdir.mk
 -include libraries\Mecha_QMC5883L-master\subdir.mk
 -include libraries\HMC5883L_Simple\subdir.mk
+-include libraries\DFRobotDFPlayerMini-1.0.3\subdir.mk
 -include core\core\subdir.mk
 -include objects.mk
 

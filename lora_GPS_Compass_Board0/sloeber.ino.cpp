@@ -2,7 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2019-01-08 01:46:13
+//This file has been generated on 2019-01-11 21:55:24
 
 #include "Arduino.h"
 #include "Arduino.h"
@@ -20,6 +20,9 @@
 uint8_t rec_gpsNhead(double *lat, double *lon, float *heading) ;
 static void parseGps(unsigned long ms) ;
 String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms) ;
+void dfPlay(uint8_t fileN, uint8_t *playerStatus) ;
+uint8_t translateDistance(float distance) ;
+void dfDistance(uint8_t distance) ;
 void setup() ;
 void loop() ;
 

@@ -13,6 +13,10 @@
 #define disconnect 	0
 #define connect 	1
 
+#define dfPlaying	1
+#define dfStop		0
+#define dfJustCheck 0
+
 static const uint32_t GPSBaud = 9600;
 
 TinyGPSPlus gps;
@@ -33,6 +37,9 @@ float rec_hd=0;
 float heading=0;
 
 uint8_t recCount,conStatus;
+uint8_t dfStat=dfStop;
+
+int declDegree=0;
 
 uint8_t rec_gpsNhead(double *lat, double *lon, float *heading)
 {
@@ -141,38 +148,177 @@ String get_gpsNhead(double *lat, double *lon, float *heading,  uint16_t ms)
 	return   String(lat_t,6) + "," +  String(lon_t,6) + " #" + String(head_t,2);
 }
 
+void dfPlay(uint8_t fileN, uint8_t *playerStatus)
+{
+	if (myDFPlayer.available())
+	{
+		if(myDFPlayer.readType() == DFPlayerPlayFinished)
+		{
+			*playerStatus=dfStop;
+			Serial.println("play finished");
+		}
+	}
+
+	if(fileN!=dfJustCheck)
+	{
+		if(*playerStatus==dfStop)
+		{
+			myDFPlayer.volume(10);  //Set volume value. From 0 to 30
+			myDFPlayer.play(fileN);
+			*playerStatus=dfPlaying;
+			Serial.print("play start");
+		}
+	}
+}
+uint8_t translateDistance(float distance)
+{
+	if(distance<=0.025)return distanceClose;
+	else if(distance<=0.050)return distanceMid;
+	else if(distance<=0.100) return distanceFar;
+	else return distanceSoFar;
+}
+void dfDistance(uint8_t distance)
+{
+	static uint8_t lastDistance=0;
+
+	static unsigned long time0 = millis();
+	static uint8_t wait0=0;
+
+	static unsigned long time1 = millis();
+	static uint8_t wait1=0;
+
+	static unsigned long time2 = millis();
+	static uint8_t wait2=0;
+
+	if(lastDistance==0 || lastDistance==distanceSoFar)
+	{
+		if(distance==distanceClose)
+		{
+			dfPlay(soundClose, &dfStat);
+			lastDistance=distanceClose;
+		}
+		else if(distance==distanceMid)
+		{
+			dfPlay(soundMid, &dfStat);
+			lastDistance=distanceMid;
+		}
+		if(distance==distanceFar)
+		{
+			dfPlay(soundFar, &dfStat);
+			lastDistance=distanceFar;
+		}
+	}
+
+	if(lastDistance!=distanceClose && distance==distanceClose)
+	{
+		dfPlay(soundClose, &dfStat);
+		lastDistance=distanceClose;
+		wait0=waitClose-1;
+	}
+	else if(lastDistance==distanceClose && distance==distanceClose)
+	{
+		dfPlay(dfJustCheck, &dfStat);
+
+		if(dfStat==dfStop)
+		{
+			if (millis() - time0 > 1000)
+			{
+				time0 = millis();
+				wait0++;
+				//dfPlay(1, &dfStat);
+			}
+		}
+		if(wait0>=waitClose)
+		{
+			dfPlay(soundClose, &dfStat);
+			wait0=0;
+		}
+		lastDistance=distanceClose;
+	}
+
+	if(lastDistance!=distanceMid && distance==distanceMid)
+	{
+		dfPlay(soundMid, &dfStat);
+		lastDistance=distanceMid;
+		wait1=waitMid-1;
+	}
+	else if(lastDistance==distanceMid && distance==distanceMid)
+	{
+		dfPlay(dfJustCheck, &dfStat);
+
+		if(dfStat==dfStop)
+		{
+			if (millis() - time1 > 1000)
+			{
+				time1 = millis();
+				wait1++;
+			}
+
+		}
+		if(wait1>=waitMid)
+		{
+			dfPlay(soundMid, &dfStat);
+			wait1=0;
+		}
+		lastDistance=distanceMid;
+	}
+
+	if(lastDistance!=distanceFar && distance==distanceFar)
+	{
+		dfPlay(soundFar, &dfStat);
+		lastDistance=distanceFar;
+		wait2=waitFar-1;
+	}
+	else if(lastDistance==distanceFar && distance==distanceFar)
+	{
+		dfPlay(dfJustCheck, &dfStat);
+
+		if(dfStat==dfStop)
+		{
+			if (millis() - time2 > 1000)
+			{
+				time2 = millis();
+				wait2++;
+			}
+		}
+		if(wait2>=waitFar)
+		{
+			dfPlay(soundFar, &dfStat);
+			wait2=0;
+		}
+		lastDistance=distanceFar;
+	}
+}
+
 void setup()
 {
 	Serial.begin(115200);
 	Serial1.begin(GPSBaud);
+	Serial2.begin(9600);
+
 	Wire.begin();
-	Compass.SetDeclination(declinationDegree0, declinationMinute0, 'E');
+
+	//Compass.SetDeclination(declDegree,0, 'E');
 	Compass.SetSamplingMode(COMPASS_SINGLE);
 	Compass.SetScale(COMPASS_SCALE_130);
 	Compass.SetOrientation(COMPASS_HORIZONTAL_X_NORTH);
-	ledInit();
+	IO_Init();
 
 	while (!Serial) ; // Wait for serial port to be available
 	if (!rf95.init())Serial.println("init failed");
 	else Serial.println("\n\nrf95 init complete(board0)");
 
-/*	if (!myDFPlayer.begin(Serial2))
+	if (!myDFPlayer.begin(Serial2))
 	{  //Use softwareSerial to communicate with mp3.
 	    Serial.println(F("Unable to begin:"));
 	    Serial.println(F("1.Please recheck the connection!"));
 	    Serial.println(F("2.Please insert the SD card!"));
 	    while(true);
-	}*/
+	}
 
 	Serial.println(F("DFPlayer Mini online."));
 
     myDFPlayer.setTimeOut(500);
-
-	//ledOut(comA, led_4, HIGH);
-	//ledOut(ledStatus, led_alarm, HIGH);
-	//delay(2000);
-	//ledOut(ledStatus, led_alarm, LOW);
-
 }
 
 void loop()
@@ -197,6 +343,10 @@ void loop()
 		}
 	}
 
+	if(getBtn()==btn0)declDegree+=5;
+	if(getBtn()==btn1)declDegree-=5;
+	Compass.SetDeclination(declDegree,0, 'E');
+
 	char data[50];
 	get_gpsNhead(&lat,&lon,&heading,10).toCharArray(data, 50);
 	if(rec_gpsNhead(&rec_lat, &rec_lon, &rec_hd))recCount++;
@@ -211,9 +361,12 @@ void loop()
 
 	String str = String(lat,6) + "," + String(lon,6) + " #" + String(heading,2) + " to " +
 				 String(rec_lat,6) + "," + String(rec_lon,6) + " #" + String(rec_hd,2) +
-				 " d: " + String(distance,3) + " b: " + String(bearing,2) + " p: " + String(pointheading,2);
+				 " d: " + String(distance,3) + " b: " + String(bearing,2) + " p: " + String(pointheading,2) +
+				 "dd: " + String(declDegree);
 
 	Serial.println(str);
+
+	if(distance!=0)dfDistance(translateDistance(distance));
 
 	ledStatusHandler(lat, lon, conStatus, distance, pointheading);
 	delay(100);

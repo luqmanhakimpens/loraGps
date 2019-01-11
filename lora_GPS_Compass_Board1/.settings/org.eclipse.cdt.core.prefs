@@ -592,7 +592,7 @@ environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.BOARD_NAME
 environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.BOARD_NAME/value=Arduino/Genuino Mega or Mega 2560
 environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.COM_PORT/delimiter=;
 environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.COM_PORT/operation=replace
-environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.COM_PORT/value=COM6
+environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.COM_PORT/value=COM5
 environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.ECLIPSE_LOCATION/delimiter=;
 environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.ECLIPSE_LOCATION/operation=replace
 environment/project/io.sloeber.core.toolChain.release.16611072/JANTJE.ECLIPSE_LOCATION/value=D\:\\SLOEBER\\/////////////////////////

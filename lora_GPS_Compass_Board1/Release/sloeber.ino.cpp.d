@@ -23,6 +23,7 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  D:\ARDUINO\Arduino\libraries\TinyGPSPlus-master\src/TinyGPS++.h \
  D:\SLOEBER\extLib\loraGpsPeriph/config.h \
  D:\SLOEBER\extLib\loraGpsPeriph/peripheral.h \
+ D:\ARDUINO\Arduino\libraries\DFRobotDFPlayerMini-1.0.3/DFRobotDFPlayerMini.h \
  ..\lora_GPS_Compass_Board1.ino
 
 D:\ARDUINO\hardware\arduino\avr\cores\arduino/Arduino.h:
@@ -72,5 +73,7 @@ D:\ARDUINO\Arduino\libraries\TinyGPSPlus-master\src/TinyGPS++.h:
 D:\SLOEBER\extLib\loraGpsPeriph/config.h:
 
 D:\SLOEBER\extLib\loraGpsPeriph/peripheral.h:
+
+D:\ARDUINO\Arduino\libraries\DFRobotDFPlayerMini-1.0.3/DFRobotDFPlayerMini.h:
 
 ..\lora_GPS_Compass_Board1.ino:

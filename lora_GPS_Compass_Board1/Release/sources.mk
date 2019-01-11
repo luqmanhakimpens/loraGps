@@ -35,6 +35,7 @@ CPP_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 core\core \
+libraries\DFRobotDFPlayerMini-1.0.3 \
 libraries\HMC5883L_Simple \
 libraries\Mecha_QMC5883L-master \
 libraries\RadioHead \

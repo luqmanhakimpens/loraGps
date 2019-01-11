@@ -42,6 +42,11 @@
 			<location>D:/ARDUINO/hardware/arduino/avr/variants/mega</location>
 		</link>
 		<link>
+			<name>libraries/DFRobotDFPlayerMini-1.0.3</name>
+			<type>2</type>
+			<location>D:/ARDUINO/Arduino/libraries/DFRobotDFPlayerMini-1.0.3</location>
+		</link>
+		<link>
 			<name>libraries/HMC5883L_Simple</name>
 			<type>2</type>
 			<location>D:/ARDUINO/Arduino/libraries/HMC5883L_Simple</location>
