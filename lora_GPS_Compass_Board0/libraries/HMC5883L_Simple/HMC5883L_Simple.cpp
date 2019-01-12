@@ -159,9 +159,12 @@ float HMC5883L_Simple::GetHeadingDegrees()
      break;
   }
     
+  mag_west+= 190;
+  mag_north+= 86.5;
   // calculate heading from the north and west magnetic axes
   heading = atan2(mag_west, mag_north);
   
+
   // Adjust the heading by the declination
   heading += declination_offset_radians;
   
@@ -173,8 +176,17 @@ float HMC5883L_Simple::GetHeadingDegrees()
   if(heading > 2*M_PI)
     heading -= 2*M_PI;
    
+  heading = heading* 180/M_PI;
+
+/*  Serial.print("mag: ");
+  Serial.print(mag_west);
+  Serial.print(",");
+  Serial.print(mag_north);
+  Serial.print(": ");
+  Serial.println(heading);*/
+
   // Convert radians to degrees for readability.
-  return heading * 180/M_PI; 
+  return heading;
 }
 
 
