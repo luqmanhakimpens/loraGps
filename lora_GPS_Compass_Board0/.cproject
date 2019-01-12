@@ -28,6 +28,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/Wire/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/DFRobotDFPlayerMini-1.0.3}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/loraGpsPeriph}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/Wire/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.931317141" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -42,6 +43,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/Wire/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/DFRobotDFPlayerMini-1.0.3}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/loraGpsPeriph}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/Wire/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1362889072" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -56,6 +58,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/Wire/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/DFRobotDFPlayerMini-1.0.3}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/libraries/loraGpsPeriph}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lora_GPS_Compass_Board0/Wire/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.1712124383" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
