@@ -55,6 +55,10 @@ void MechaQMC5883::read(uint16_t* x,uint16_t* y,uint16_t* z,int* a){
 
 void MechaQMC5883::read(uint16_t* x,uint16_t* y,uint16_t* z,float* a){
   read(x,y,z);
+
+	*x+=78;
+	*y+=218;
+
   *a = azimuth(y,x);
 }
 
